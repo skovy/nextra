@@ -1,4 +1,5 @@
 import nextra from 'nextra'
+import {withAsktro} from "@asktro/nextra/dist/plugin.mjs"
 
 const withNextra = nextra({
   theme: 'nextra-theme-docs',
@@ -10,7 +11,10 @@ const withNextra = nextra({
   defaultShowCopyCode: true
 })
 
-export default withNextra({
+export default withAsktro({
+  // eslint-disable-next-line no-undef
+  apiKey: process.env.ASKTRO_UPLOAD_API_KEY
+})(withNextra({
   reactStrictMode: true,
   eslint: {
     // Eslint behaves weirdly in this monorepo.
@@ -42,4 +46,4 @@ export default withNextra({
     })
     return config
   }
-})
+}))

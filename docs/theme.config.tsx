@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import type { DocsThemeConfig } from 'nextra-theme-docs'
 import { useConfig } from 'nextra-theme-docs'
+import { Search } from "@asktro/nextra"
 
 const logo = (
   <span>
@@ -55,6 +56,9 @@ const config: DocsThemeConfig = {
         titleTemplate: '%s – Nextra'
       }
     }
+  },
+  search: {
+    component: () => <Search apiKey={process.env.NEXT_PUBLIC_ASKTRO_CLIENT_API_KEY} />,
   },
   logo,
   head: function useHead() {
